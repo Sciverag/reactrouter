@@ -12,10 +12,24 @@ import ProfilePage from './pages/ProfilePage';
 import AdminPanel from './pages/AdminPanel';
 import Navbar from './components/Navbar';
 
+const setupUsers = () => {
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem(
+      "users",
+      JSON.stringify([
+        { email: "admin@example.com", password: "admin123", role: "admin"},
+        { email: "user@example.com", password: "user123", role: "user"},
+      ])
+    );
+  }
+};
+setupUsers();
+
+
 function App() {
   return (
     <Router>
-      <div className="container mt-5">
+      <div className="container-flow mt-5">
         <Navbar />
         <hr/>
         <Routes>
